@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { nanoid } from "@reduxjs/toolkit";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchPreview } from "../../features/characters/charactersSlice";
+import { fetchPreview } from '../../features/characters/charactersSlice';
 
-import CategoryDropdown from "../category-dropdown/category-dropdown.component";
+import CategoryDropdown from '../category-dropdown/category-dropdown.component';
 
-import { VscTriangleUp } from "react-icons/vsc";
+import { VscTriangleUp } from 'react-icons/vsc';
 
 import {
   ArrowContainer,
@@ -14,55 +14,55 @@ import {
   NavContent,
   NavItem,
   PreviewContainer,
-} from "./nav.styles";
+} from './nav.styles';
 
-import PreviewCard from "../preview-card/preview-card.component";
+import PreviewCard from '../preview-card/preview-card.component';
 
 const Navigation = () => {
   // Redux calls for selected category
   const dispatch = useDispatch();
-  const previews = useSelector((state) => state.characters.previewItems);
-  console.log("PREVIEW ITEMS: ", previews);
+  const previews = useSelector(state => state.characters.previewItems);
+  console.log('PREVIEW ITEMS: ', previews);
 
   // Pull items from Redux/API call
   // const items = useSelector((state) => state.characters.charactersData);
 
   // Pull items from local storage
-  const items = JSON.parse(localStorage.getItem("characters"));
+  const items = JSON.parse(localStorage.getItem('characters'));
 
   // Navigation Categories
   // const categories = ["comics", "characters", "movies", "games"];
-  const categories = ["characters"];
+  const categories = ['characters'];
 
   // Cache of the hovered navigation category
   const [hoveredCategory, setHoveredCategory] = useState(null);
 
-  const [expand, setExpand] = useState("false");
+  const [expand, setExpand] = useState('false');
 
   // Display the navigation dropdown
-  const handleShowPreview = (category) => {
+  const handleShowPreview = category => {
     setHoveredCategory(category.toUpperCase());
-    setExpand("true");
+    setExpand('true');
   };
 
   // Hide the navigation dropdown
   const handleHidePreview = () => {
     setHoveredCategory(null);
-    setExpand("false");
+    setExpand('false');
   };
 
-  const updateCategory = (category) => {
+  const updateCategory = category => {
     dispatch(fetchPreview(items));
   };
 
-  const handleClick = (e) => {
-    e.target.classList.toggle("inactive");
+  const handleClick = e => {
+    e.target.classList.toggle('inactive');
     handleHidePreview();
-    e.target.classList.toggle("inactive");
+    e.target.classList.toggle('inactive');
   };
 
   useEffect(
-    (category) => {
+    category => {
       const getPreview = () => {
         // dispatch(fetchPreview(items));
 
@@ -72,13 +72,13 @@ const Navigation = () => {
 
       getPreview();
     },
-    [dispatch, hoveredCategory]
+    [dispatch, hoveredCategory, items]
   );
 
   return (
     <NavContainer onMouseLeave={() => handleHidePreview()}>
       <NavContent>
-        {categories.map((category) => {
+        {categories.map(category => {
           return (
             <>
               <NavItem
@@ -88,7 +88,7 @@ const Navigation = () => {
                 onClick={handleClick}
               >
                 <span
-                  className='hover:shadow-xl shadow-red-900'
+                  className="hover:shadow-xl shadow-red-900"
                   onMouseEnter={() => updateCategory(category)}
                 >
                   {category.toUpperCase()}
@@ -99,15 +99,15 @@ const Navigation = () => {
         })}
       </NavContent>
 
-      <ArrowContainer className='arrow' show={expand}>
+      <ArrowContainer className="arrow" show={expand}>
         <VscTriangleUp />
       </ArrowContainer>
       <CategoryDropdown expand={expand} hovered={hoveredCategory}>
         <PreviewContainer>
-          {categories.map((category) => {
-            return previews.map((preview) => {
+          {categories.map(category => {
+            return previews.map(preview => {
               const idx = previews.indexOf(preview);
-              console.log('IDX: ', idx)
+              console.log('IDX: ', idx);
               return (
                 <PreviewCard
                   key={nanoid()}

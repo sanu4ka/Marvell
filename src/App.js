@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchComics,
-  fetchCharacters,
-} from "./features/characters/charactersSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import {
+//   fetchComics,
+//   fetchCharacters,
+// } from "./features/characters/charactersSlice";
 
 import "./App.css";
 import Header from "./components/header/header.component";
@@ -22,7 +22,7 @@ import { AnimatePresence } from "framer-motion";
 
 function App() {
   // Initial call to retrieve comics from the Marvel website
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   /**
    * TESTING FROM REDUX

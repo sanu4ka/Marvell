@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { MarkeeContainer } from "./markee.styles";
+import { MarkeeContainer } from './markee.styles';
 
-const Markee = ({name}) => {
-  const [markee, setMarkee] = useState("");
+const Markee = ({ name }) => {
+  const [markee, setMarkee] = useState('');
 
   useEffect(() => {
     try {
       let characterMarkee = name;
 
-      
       setMarkee(characterMarkee);
     } catch (error) {
       console.log(error);
     }
-  }, [markee]);
+  }, [markee, name]);
 
   return (
     <MarkeeContainer>
-      <span className='scrolling'>{markee}</span>
-      <span className='scrolling'>{markee}</span>
+      <span className="scrolling">{markee}</span>
+      <span className="scrolling">{markee}</span>
     </MarkeeContainer>
   );
 };

@@ -1,5 +1,3 @@
-import tw, { styled } from 'twin.macro'
+import { styled } from 'twin.macro';
 
-export const MoviesPageContainer = styled.div`
-  
-`;
+export const MoviesPageContainer = styled.div``;

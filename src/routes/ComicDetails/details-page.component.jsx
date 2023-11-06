@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+// import { useSelector } from "react-redux";
+// import { nanoid } from "@reduxjs/toolkit";
 
-import AnimatedPage from "../../AnimatedPage";
+import AnimatedPage from '../../AnimatedPage';
 
 import {
   DetailsPageContainer,
   DetailsPageWrapper,
-} from "./details-page.styles";
-import Details from "../../components/details/details.component";
+} from './details-page.styles';
+import Details from '../../components/details/details.component';
 
 const ComicsDetailsPage = () => {
-  const allComics = JSON.parse(localStorage.getItem("comics"));
+  const allComics = JSON.parse(localStorage.getItem('comics'));
   console.log(allComics);
 
   const param = useParams();
@@ -29,7 +29,7 @@ const ComicsDetailsPage = () => {
 
   return (
     <AnimatedPage>
-      <DetailsPageWrapper className='page'>
+      <DetailsPageWrapper className="page">
         <DetailsPageContainer>
           <Details selected={selected} />
         </DetailsPageContainer>
