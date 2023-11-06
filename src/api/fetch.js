@@ -15,7 +15,7 @@ export const fetchData = async searchTerm => {
       `https://gateway.marvel.com/v1/public/${term}?apikey=${params.apikey}&ts=${params.ts}&hash=${params.hash}`
     );
     const data = await res.json();
-    localStorage.setItem(term, JSON.stringify(data));
+    // localStorage.setItem(term, JSON.stringify(data));
     return data.data.results;
   } catch (error) {
     console.log('Error fetching data. ', error);

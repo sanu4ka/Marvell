@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 
 import {
   PreviewCardContainer,
@@ -34,9 +34,9 @@ const PreviewCard = ({ category, show, idx, close }) => {
     },
   };
 
-  // const previews = useSelector((state) => state.comics.previewItems);
-  const preParse = JSON.parse(localStorage.getItem('characters'));
-  const previews = preParse.data.results;
+  const previews = useSelector(state => state.comics.previewItems);
+  // const preParse = JSON.parse(localStorage.getItem('characters'));
+  // const previews = preParse.data.results;
 
   const { name } = previews[idx];
 

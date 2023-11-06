@@ -25,14 +25,14 @@ const Navigation = () => {
   console.log('PREVIEW ITEMS: ', previews);
 
   // Pull items from Redux/API call
-  // const items = useSelector((state) => state.characters.charactersData);
+  const items = useSelector(state => state.characters.charactersData);
 
   // Pull items from local storage
-  const items = JSON.parse(localStorage.getItem('characters'));
+  // const items = JSON.parse(localStorage.getItem('characters'));
 
   // Navigation Categories
-  // const categories = ["comics", "characters", "movies", "games"];
-  const categories = ['characters'];
+  const categories = ['comics', 'characters', 'movies', 'games'];
+  // const categories = ['characters'];
 
   // Cache of the hovered navigation category
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -64,10 +64,10 @@ const Navigation = () => {
   useEffect(
     category => {
       const getPreview = () => {
-        // dispatch(fetchPreview(items));
+        dispatch(fetchPreview(items));
 
         //For testing with local storage
-        dispatch(fetchPreview(items, category));
+        // dispatch(fetchPreview(items, category));
       };
 
       getPreview();

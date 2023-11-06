@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-// import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 // import { nanoid } from "@reduxjs/toolkit";
 
 import AnimatedPage from '../../AnimatedPage';
@@ -12,7 +12,7 @@ import {
 import Details from '../../components/details/details.component';
 
 const ComicsDetailsPage = () => {
-  const allComics = JSON.parse(localStorage.getItem('comics'));
+  const allComics = useSelector(state => state.comics.comicsData);
   console.log(allComics);
 
   const param = useParams();

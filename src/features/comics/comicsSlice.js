@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchData } from "../../api/fetch";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchData } from '../../api/fetch';
 export const comicsSlice = createSlice({
-  name: "comics",
+  name: 'comics',
   initialState: {
     comicsData: [],
     selectedItem: {},
@@ -13,16 +13,16 @@ export const comicsSlice = createSlice({
       reducer(state, action) {
         const { payload } = action;
         state.selectedItem = payload;
-        console.log("FETCHED COMICS STATE: ", state.selectedItem);
+        console.log('FETCHED COMICS STATE: ', state.selectedItem);
         console.log(state.comicsData.data);
-        // return state;
+        return state;
       },
     },
 
     fetchPreview: {
       reducer(state, action) {
         const { payload } = action;
-        console.log("PAYLOAD: ", payload);
+        console.log('PAYLOAD: ', payload);
         let items = [];
 
         for (let idx = 0; idx < 4; idx++) {
@@ -35,20 +35,19 @@ export const comicsSlice = createSlice({
   },
 
   // Processing of data returned from the Marvel website
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // Returned comics data
-    builder
-      .addCase(fetchComics.fulfilled, (state, action) => {
-        // Merge the formatted posts into the state
-        state.comicsData = action.payload;
-      })
+    builder.addCase(fetchComics.fulfilled, (state, action) => {
+      // Merge the formatted posts into the state
+      state.comicsData = action.payload;
+    });
   },
 });
 
 // Initial call for fetching comics information from the Marvel website.
 export const fetchComics = createAsyncThunk(
-  "comics/fetchComics",
-  async (term) => {
+  'comics/fetchComics',
+  async term => {
     try {
       // Call to the site for info
       const response = await fetchData(term);
@@ -56,7 +55,7 @@ export const fetchComics = createAsyncThunk(
       // Returns the data to the 'extraReducers' for processing
       return response;
     } catch (error) {
-      console.log("Error fetching comics: ", error);
+      console.log('Error fetching comics: ', error);
     }
   }
 );

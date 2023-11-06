@@ -1,31 +1,32 @@
-import React from "react";
-import { nanoid } from "@reduxjs/toolkit";
+import React from 'react';
+import { nanoid } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
-import { ComicsPageContainer, ComicsPageWrapper } from "./comics-page.styles";
-import ComicsCard from "../../components/comics-card/comics-card.component";
+import { ComicsPageContainer, ComicsPageWrapper } from './comics-page.styles';
+import ComicsCard from '../../components/comics-card/comics-card.component';
 
 const ComicsPage = () => {
   // Fetch comics from API call
-  // const allComics = useSelector((state) => state.comics.comicsData);
+  const allComics = useSelector(state => state.comics.comicsData);
 
   // Parse the comics from the fetched results (API)
-  // const comics = allComics;
+  const comics = allComics;
 
   // Fetch characters from local storage (while testing)
-  const allComics = JSON.parse(localStorage.getItem("comics"));
+  // const allComics = JSON.parse(localStorage.getItem("comics"));
 
   // Parse the characters from the fetched results (local storage testing)
-  const comics = allComics.data.results;
+  // const comics = allComics.data.results;
 
   for (let comic in comics) {
-    console.log("Title: ", comics[comic].title);
+    console.log('Title: ', comics[comic].title);
   }
 
   return (
-    <ComicsPageWrapper className='page'>
+    <ComicsPageWrapper className="page">
       <ComicsPageContainer>
         {comics ? (
-          comics.map((comic) => {
+          comics.map(comic => {
             return <ComicsCard id={nanoid()} item={comic} />;
           })
         ) : (
