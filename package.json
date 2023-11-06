@@ -24,7 +24,8 @@
     "react-scroll-to-top": "^3.0.0",
     "styled-components": "^6.0.7",
     "twin.macro": "^3.4.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "md5": "2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
