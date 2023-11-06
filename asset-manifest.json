@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/marvell/static/css/main.c613b364.css",
-    "main.js": "/marvell/static/js/main.a61f2b32.js",
+    "main.js": "/marvell/static/js/main.9d0365cd.js",
     "static/media/marvel-wp-2.jpg": "/marvell/static/media/marvel-wp-2.799153ccc015b5feecdd.jpg",
     "index.html": "/marvell/index.html",
     "main.c613b364.css.map": "/marvell/static/css/main.c613b364.css.map",
-    "main.a61f2b32.js.map": "/marvell/static/js/main.a61f2b32.js.map"
+    "main.9d0365cd.js.map": "/marvell/static/js/main.9d0365cd.js.map"
   },
   "entrypoints": [
     "static/css/main.c613b364.css",
-    "static/js/main.a61f2b32.js"
+    "static/js/main.9d0365cd.js"
   ]
 }
